@@ -49,8 +49,6 @@ Data.deleteOneItem = async (request, response) => {
   response.status(200).send('Success! Item deleted.');
   console.log('this is inside deleteOneItem', id)
 
-  // await Item.findOne({_id: id})
-
 }
 
 
