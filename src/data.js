@@ -17,7 +17,7 @@ Data.addAnItem = async (request, response, next) => {
   } catch(e) { next(e.message);}
 }
 
-// ==================== .GET/READ ====================
+// ==================== .GET/READ ===================
 
 Data.getAllItems = async (request, response) => {
   const items = await DataModel.find({});
