@@ -14,27 +14,21 @@ Data.addAnItem = async (request, response, next) => {
     console.log(item);
     await item.save();
     response.status(200).send(item);
-  } catch (err) { next(err.message); }
+  } catch(e) { next(e.message);}
 }
 
 // ==================== .GET/READ ====================
 
 Data.getAllItems = async (request, response) => {
-  const items = await DataModel.find({}, function (err, items) {
-    if (err) return console.log.error(err);
-  });
+  const items = await DataModel.find({});
   response.status(200).send(items);
   console.log('getAllItem', items);
 }
 
 Data.getOneItem = async (request, response) => {
   const id = request.params.id;
-  await DataModel.findById(id, function (err, item) {
-    if (err) { return (err.message) }
-    else {
-      response.status(200).send(item);
-    }
-  });
+  const item = await DataModel.find({_id:id});
+  response.status(200).json(item[0]);
   console.log('inside of getOneItem', id);
 }
 
@@ -52,7 +46,7 @@ Data.updateOneItem = async (request, response) => {
 Data.deleteOneItem = async (request, response) => {
   const id = request.params.id;
   await DataModel.deleteOne({ _id: id });
-  response.status(200).send('success! item deleted.');
+  response.status(200).send('Success! Item deleted.');
   console.log('this is inside deleteOneItem', id)
 
   // await Item.findOne({_id: id})

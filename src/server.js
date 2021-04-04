@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended:true}));
 app.get('/items', Data.getAllItems);
 app.get('/items/:id', Data.getOneItem);
 app.delete('/items/:id', Data.deleteOneItem);
-app.put('./items/:id', Data.updateOneItem);
+app.put('/items/:id', Data.updateOneItem);
 app.post('/items', Data.addAnItem);
 
 // proof of life
